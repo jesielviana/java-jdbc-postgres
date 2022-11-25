@@ -14,7 +14,7 @@ public class App {
     public static void main(String[] args) {
         try {
             Connection conexcao = DriverManager.getConnection("jdbc:postgresql://localhost:5432/jdbc_aula",
-                    "postgres", "");
+                    "postgres", "12345");
             if (conexcao != null) {
                 System.out.println("Banco de dados conectado com sucesso!");
                 Statement stm = conexcao.createStatement();
@@ -30,7 +30,7 @@ public class App {
     }
 
     static void consultaDados(Statement stm) {
-        String sql = "select id, nome from usuario";
+        String sql = "select id, nome from usuarios";
         try {
             ResultSet result = stm.executeQuery(sql);
             while (result.next()) {
@@ -42,7 +42,7 @@ public class App {
     }
 
     static void insereDados(Statement stm) {
-        String sql = "insert into usuario (nome) values ('Silva')";
+        String sql = "insert into usuarios (nome) values ('Silva')";
         try {
             stm.executeUpdate(sql);
         } catch (SQLException e) {
